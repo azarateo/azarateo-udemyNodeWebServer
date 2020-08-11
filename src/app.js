@@ -1,10 +1,16 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-const sourcePath = path.join(__dirname,'../public')
 
-app.use(express.static(sourcePath))
+//Defining paths for the public folder and the templates folder
+const sourcePath = path.join(__dirname,'../public')
+const viewsPath = path.join(__dirname,'../templates')
+
+//Setting express' view engine and view path.
 app.set('view engine','hbs')
+app.set('views',viewsPath)
+//
+app.use(express.static(sourcePath))
 
 app.get('',(req,res)=>{
     res.render('index',{
