@@ -3,6 +3,11 @@ const path = require('path')
 const app = express()
 const hbs = require('hbs')
 
+//import utils to get weather data and geocode
+
+const { geocode } = require('./utils/geocode.js')
+const { forecast } = require('./utils/forecast.js')
+
 //Defining paths for the public folder and the templates folder
 const sourcePath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
@@ -39,18 +44,33 @@ app.get('/help',(req,res)=>{
 })
 
 app.get('/weather',(req,res)=>{
-    if(!req.query.address){
+    var address = req.query.address
+    if(!address){
         return res.send({
             error: 'Please provide a search term'
         })
     }
-    console.log(req.query)
-    res.send(
-        {
-            address: req.query.address
+    geocode(address,(error, {latitude, longitude, location})=>{
+        if(error){
+            res.send({
+                error:'There was a problem geocoding'
+            })
+        }else{
+            forecast(latitude,longitude,(error,data)=>{
+                if (error) {
+                    res.send({
+                        error:'There was a problem geocoding'
+                    })
+                }else{
+                    res.send({
+                        location: location,
+                        data: data,
+                        address:address
+                    })
+                }
+            })  
         }
-    )
-
+    })
 })
 
 app.get('/products',(req,res)=>{
