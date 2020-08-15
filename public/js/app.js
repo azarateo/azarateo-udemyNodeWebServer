@@ -3,18 +3,26 @@ console.log('Javascript files loaded.');
 
 const form = document.getElementById('weatherForm')
 const searchBox = document.getElementById('searchBox')
+const message1 = document.querySelector('#message1')
+const message2 = document.querySelector('#message2')
+
+
+
 
 form.addEventListener('submit', (e) => {
+   
     e.preventDefault()
-    const requestString = 'http://localhost:3000/weather?address=' + searchBox.value
-    fetch(requestString).then((response) => {
+
+    message1.textContent = 'Loading...'
+    message2.textContent = ''
+
+    fetch('http://localhost:3000/weather?address=' + searchBox.value).then((response) => {
         response.json().then((data) => {
             if (data.error) {
-                console.log('Error:' + data.error)
+                message1.textContent = data.error
             } else {
-                console.log(data.location)
-                console.log(data.data)
-                console.log(data.address)
+                message1.textContent = data.location + ":" 
+                message2.textContent = data.data
             }
         })
     })
