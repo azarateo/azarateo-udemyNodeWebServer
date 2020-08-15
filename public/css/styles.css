@@ -1,6 +1,42 @@
-h1 {
-    color: grey;
+body {
+    color: #333333;
+    font-family:arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-img {
+
+footer {
+    margin: 16px;
+    padding: 16px;
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 0 16px;
+}
+
+header {
+    font-family: arial;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+header a {
+    color: #888888;
+    margin-left: 16px;
+    text-decoration: none;
+}
+.main_content {
+    flex-grow: 1;
+}
+
+.portrait {
     width: 250px;
 }
