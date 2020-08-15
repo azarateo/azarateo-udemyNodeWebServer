@@ -50,16 +50,16 @@ app.get('/weather',(req,res)=>{
             error: 'Please provide a search term'
         })
     }
-    geocode(address,(error, {latitude, longitude, location})=>{
+    geocode(address,(error, {latitude, longitude, location} = {})=>{
         if(error){
             res.send({
-                error:'There was a problem geocoding'
+                error
             })
         }else{
             forecast(latitude,longitude,(error,data)=>{
                 if (error) {
                     res.send({
-                        error:'There was a problem geocoding'
+                        error
                     })
                 }else{
                     res.send({
