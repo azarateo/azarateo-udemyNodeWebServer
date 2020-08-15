@@ -4,13 +4,19 @@
         <title>Weather app.</title>
         <link rel="icon" href="images/weather.png">
         <link rel="stylesheet" href="css/styles.css">
-        <script src="js/app.js"></script>
     </head>
     <div class="main_content">
          <body>
             {{>header}}
             <h2>Weather</h2>
+
+            <form action="" id="weatherForm">
+                <input type="text" id="searchBox">
+                <button>Search
+                </button>
+            </form>
         </body>
     </div>
+    <script src="js/app.js"></script>
     {{>footer}}
 </html>
