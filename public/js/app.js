@@ -1,6 +1,3 @@
-console.log('Javascript files loaded.');
-
-
 const form = document.getElementById('weatherForm')
 const searchBox = document.getElementById('searchBox')
 const message1 = document.querySelector('#message1')
