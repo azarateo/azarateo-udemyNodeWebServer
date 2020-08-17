@@ -18,7 +18,12 @@ const forecast = (latitude, longitude, callback) => {
             callback('There was an error trying to get that location: ' + response.body.error.info, undefined)
         } else {
             const data = response.body
-            callback(undefined, data.current.weather_descriptions[0] + '. ' + 'In ' + data.location.name + ' the temperature is ' + data.current.temperature + ' centigrades and it feels like ' + data.current.feelslike)
+            callback(undefined, data.current.weather_descriptions[0] 
+                + '. In ' + data.location.name 
+                + ' the temperature is ' + data.current.temperature 
+                + ' centigrades and it feels like ' + data.current.feelslike
+                + ' and the humidity is ' + data.current.humidity
+                )
         }
     })
 }

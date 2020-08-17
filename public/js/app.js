@@ -3,9 +3,6 @@ const searchBox = document.getElementById('searchBox')
 const message1 = document.querySelector('#message1')
 const message2 = document.querySelector('#message2')
 
-
-
-
 form.addEventListener('submit', (e) => {
    
     e.preventDefault()
